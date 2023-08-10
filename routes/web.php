@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\CatalogOfArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//MainPage
+Route::get('/', [MainPageController::class, 'index'])->name('MainPage');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//CatalogOfArticle
+Route::get('/articles', [CatalogOfArticleController::class, 'index'])->name('CatalogOfArticle');
+Route::get('/articles/{slug}', [CatalogOfArticleController::class, 'show'])->name('articleSlug');
